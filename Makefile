@@ -1,8 +1,8 @@
 CC := g++
-CFLAGS := -Wall -Wextra #-std=c++11
-SRCS := $(wildcard *.cpp)
-OBJS := $(SRCS:.cpp=.o)
-HEADERS := $(wildcard *.hpp)
+CFLAGS := -Wall -Wextra
+SRCS := $(wildcard srcs/*.cpp)
+OBJS := $(SRCS:srcs/%.cpp=%.o)
+HEADERS := $(wildcard includes/*.hpp)
 LIB := libftpp.a
 
 all: $(LIB)
@@ -10,8 +10,8 @@ all: $(LIB)
 $(LIB): $(OBJS)
 	ar rcs $@ $^
 
-%.o: %.cpp $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: srcs/%.cpp includes/%.hpp
+	$(CC) $(CFLAGS) -c $< -o $@ -I includes
 
 fclean:
 	rm -f $(OBJS) $(LIB)
