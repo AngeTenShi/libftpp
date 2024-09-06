@@ -6,7 +6,6 @@
 #include <mutex>
 #include <sstream>
 #include <string>
-#include <iostream>
 #include <ostream>
 
 extern std::mutex coutMutex;
