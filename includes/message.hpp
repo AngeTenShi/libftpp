@@ -21,6 +21,18 @@ class Message
 			_data >> data;
 			return *this;
 		}
+		const Message &operator>>(int &data) const
+		{
+			auto str = _data.str();
+			try {
+				data = std::stoi(str);
+			} catch (const std::exception &e) {
+				data = 0;
+			}
+			return *this;
+		}
+
+		typedef int Type;
 	private:
 		int _type;
 		std::stringstream _data;
